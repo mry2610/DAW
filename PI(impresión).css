@@ -1,0 +1,17 @@
+@import"PI.css";
+
+header {
+  display: none;
+  }
+
+footer {
+    display: none;
+    }
+input[type="submit"] { 
+    display: none;
+}
+.navegadores {
+   display:none;
+  }
+
+

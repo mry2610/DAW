@@ -1,0 +1,82 @@
+@import"PI.css";
+
+:root {
+    --fuente:"Atkinson Hyperlegible"
+  }
+
+body{
+    background-color: #C2CAFF;  
+}
+h3{
+    color: #0C271C;
+}
+
+h1{
+    color: #0C271C;
+}
+h2{
+    color: #0C271C;
+}
+nav ul li a:hover {
+    background-color: white;
+    color: black;
+
+  }
+  nav ul li a {
+    background-color:#7D8EFA ;
+    color:black;
+
+  }
+  .contentFormRegistro {
+    border: 3px solid black;
+    
+  }
+  .contentForm{
+    border: 3px solid black;
+    
+  }
+
+  input[type="submit"]:hover {
+    background-color: white;
+    color: black;
+   
+  }
+  input[type="submit"] {
+    background-color:#7D8EFA ;
+    color:black;
+    
+  }
+  footer {
+    background-color: #7D8EFA;
+  }
+
+  footer p {
+    color: black;
+  }
+
+.navegadores:hover {
+    background-color: white;
+    color: black;
+
+  }
+  .navegadores {
+    background-color:#7D8EFA ;
+
+  }
+  .detalle {
+    background-color: #7D8EFA;
+   
+  }
+  .material-symbols-outlined{
+    background-color: #7D8EFA;
+    color: black;
+  
+  }.material-symbols-outlined:hover{
+    background-color: white;
+    color: black;
+  }
+  .index {
+    border: 3px solid black;
+
+
+  }

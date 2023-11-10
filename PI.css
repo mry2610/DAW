@@ -1,0 +1,654 @@
+:root {
+    --fuente:"SIMPLIFICA"
+  }
+
+/*Pantalla de pc*/
+
+p{
+    font-family: var(--fuente);
+    font-size: 30px;
+    font-weight:400;
+}
+ul li{
+    font-family: var(--fuente);
+    font-size: 20px;
+    font-weight:400;
+}
+.inicio{
+    display: flex;
+    flex-direction: column ;
+    align-items: center;
+}
+
+.roma{
+    width: 70%;
+}
+
+.seccion{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+    gap: 1%; 
+    justify-content: center; 
+    place-items: center;
+}
+
+.seccionPerfil{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+    gap: 1%; 
+    justify-content: center; 
+    place-items: center;
+    margin-bottom: 5%;
+}
+
+.solicitudAlb{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+    gap: 20px; 
+    justify-content: center; 
+    align-items: baseline; 
+}
+
+.formRegistro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.contentForm{
+    border:  2px solid #8e582c;
+    padding: 30px;
+    width: 80%;
+}
+
+.contentFormRegistro{
+    border:  2px solid #8e582c;
+    padding: 20px;
+    width: 40%;
+}
+
+span{
+    font-size: 1em;
+}
+
+table, th, td {
+    border: 1px solid rgb(0, 0, 0);
+    border-collapse: collapse;
+    width: 30%;
+    background-color: white;
+    font-family: var(--fuente);
+    font-size: 1.2em;
+}
+
+table tr{
+    align-items: center;
+}
+
+.tablaSol{
+    width: 90%;
+    height: 100%;
+    margin-bottom: 2em;
+    align-content: center;
+    table-layout: fixed;
+}
+
+.perfil_album{
+    width: 70%;
+    height: 70%;
+}
+header{
+    display: flex; /* Utilizamos flexbox para alinear elementos */
+    justify-content: space-between; /* Espacio entre elementos */
+    align-items: center;
+}
+
+.cabezeraizq{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.img{
+    width: 100px;
+    height: 100px;
+}
+
+.cabezerader{
+    display: flex;
+    justify-content: right;
+    align-items: center;   
+}
+
+nav ul{
+    list-style-type:none;
+    display: flex;
+}
+
+nav ul li{
+    padding: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    display: block;
+    padding: 0.8em;
+    background-color: #ad885e;
+    color:white;
+    font-family: var(--fuente);
+    font-size: 20px;
+
+}
+
+nav ul li a:hover{
+    background-color: white;
+    color:#ad885e;
+    font-weight: 700;
+
+}
+
+.site-title{
+    font-family: var(--fuente);
+    font-size: 70pX;
+    margin-left: 30px;   
+}
+
+#buscador{
+    border:none;
+    padding:  0.8em;
+    font-family: var(--fuente);
+    font-size: 20px;
+    
+}
+#buscadorRapido{
+    width: 53px;
+    height: 53px;
+    padding: 0.8em;  
+}
+
+.buscador-form p {
+    display: flex;
+    align-items: center;
+    
+}
+
+.foto_perfil{
+    width: 70px;
+    height: 70px;
+    margin-left: 15px;
+}
+
+.index{
+    border:2px solid #8e582c;
+    padding:1%;
+    width:70%;
+    background-color: white;
+    margin-top: 3%;
+    text-align: center;
+}
+
+.detallesImagen{
+    border:2px solid #8e582c;
+    padding:1%;
+    width:70%;
+    background-color: white;
+    margin-top: 3%;
+    text-align: center;
+    place-content: center;
+}
+
+article p{
+    font-family: var(--fuente);
+    font-size: 1.7em;  
+}
+
+article a {
+    font-family: var(--fuente);
+    font-size: 35px;
+    color:#4E8196;
+    text-decoration: none;
+    
+}
+
+form div p label{
+    font-family: var(--fuente);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.estiloform{
+    border:none;
+    font-family: var(--fuente);
+    font-size: 1.3em;
+    background-color: white;
+    width: 95%;
+    /*mirar por si acaso select*/   
+}
+
+#color{
+    width: 95%;
+    border: none;
+    background-color: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+input[type="submit"]{
+    border:none;
+    display: block;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    background-color: #ad885e;
+    color:white;
+    font-family: var(--fuente);
+    font-size:1.3em;
+}
+
+input[type="submit"]:hover{
+    background-color: white;
+    color:#ad885e;
+    font-weight: 700;
+
+}
+
+.navegadores{
+    text-decoration:none;
+    padding: 0.2em; 
+    background-color: #ad885e;
+    color:white;
+    font-family: var(--fuente);
+    font-size: 1.5em;
+    height: 30px;
+}
+
+.navegadores:hover{
+    background-color: white;
+    color:#ad885e;
+    font-weight: 700;
+}
+.botonesperfil{
+    margin-top: 30px;
+}
+
+h2{
+    font-family: var(--fuente);
+    font-size: 1.6em;
+    color:#4E8196;
+}
+
+h3{
+    font-family: var(--fuente);
+    font-size: 1.5em;;
+}
+
+div div p{
+    font-family: var(--fuente);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/*pagina formulario imagen detallada*/
+.detalle{
+    background-color: #ad885e;
+    display: block;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-size: cover;
+    width: 100%;
+    height: 14%;
+}
+
+.detalle p{
+    font-family: var(--fuente);
+    font-size: 25px;
+    margin-left: 30px;
+    color: white;
+}
+
+
+/* fin de pagina formulario imagen detallada*/
+.material-symbols-outlined{
+    background-color: #ad885e;
+    text-decoration: none;
+    color: white;
+    padding: 0.8em;
+    font-size: 20px !important;
+    margin-left: 0.5em;
+    font-weight: 700;
+    
+}
+.material-symbols-outlined:hover{
+    background-color: white;
+    color: #ad885e;
+    font-weight: 700;
+}
+
+footer {
+    background-color: #ad885e;
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+}
+
+footer p {
+    font-family: var(--fuente);
+    font-size: 25px;
+    margin-left: 30px;
+    color: white; 
+}
+
+body{
+    margin-left: 30px; 
+    background-color: #f0d5b6;  
+   
+}
+
+h1{
+    font-family: var(--fuente);
+    font-size: 2.5em;
+    color:#4E8196;
+    text-align: center;
+}
+
+main{
+    margin-bottom: 5em;
+    margin-left:30px ;
+}
+
+
+
+/*css de tablets*/
+@media screen and (min-width: 767px) and (max-width: 1289px) {
+    .material-symbols-outlined{
+        font-size: 0.7em !important; 
+    }
+
+    #luparara{
+       font-size: large; 
+    }
+
+    .contentFormRegistro{
+        width: 70%;
+    }
+    
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: var(--fuente);
+        font-size: 16px;
+    }
+
+  
+    table, th, td { /*Mirar tamaño*/
+        font-size: 16px; 
+    }
+
+    
+    .perfil_album {
+        width: 250px;
+        height: 250px;
+    }
+
+    
+    header {
+        justify-content: center; 
+        flex-direction: row; 
+        margin-top: 10px;
+    }
+
+    nav ul {
+        list-style-type: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav ul li {
+        padding: 3px; 
+    }
+
+    nav ul li a {
+        padding: 4px; 
+    }
+
+   
+    .site-title {
+        font-size: 50px;
+        margin: 0 10px 0 20px; 
+    }
+
+    
+    #buscador {
+        width: 100%; 
+        padding: 4px; 
+    }
+    #buscadorRapido{
+        width: 30px;
+        height: 30px;
+    }
+
+    .foto_perfil {
+        width: 40px;
+        height: 40px;
+        margin: 0 10px; 
+    }
+
+
+    article a {
+        font-size: 20px; 
+    }
+
+    
+    form div p label {
+        margin-right: 10px;
+    }
+
+    
+    input[type="submit"] {
+        padding: 0.8em; 
+        font-size: 1em; 
+    }
+
+   
+    .navegadores {
+        padding: 0.3em;
+        font-size: 18px; 
+        height: 25px;
+    }
+
+
+    h2 {
+        font-size: 2em;
+    }
+
+    h3 {
+        font-size: 1.7em; 
+    }
+
+   
+    footer {
+        text-align: center;
+        padding: 10px 0;
+        bottom:0;
+        position: relative;
+    }
+
+    footer p {
+        font-size: 16px; 
+    }
+
+    .seccionPerfil{     
+        grid-template-columns: 1fr 1fr;
+    }
+
+    
+
+}
+
+
+
+
+/*css de moviles*/
+@media screen and (max-width:767px)  {
+    .material-symbols-outlined{
+        font-size: 1.15em !important;
+    }
+    .solicitudAlb{
+        flex-direction: column;
+        align-items: center;
+        grid-template-columns: 1fr; 
+    }
+
+    .tablaSol{
+        width: 90%;
+        height: 80%;
+    }
+
+    .roma{
+        width: 80%;
+    }
+
+    article p{
+        font-size: 1.7em;  
+    }
+    
+    .seccion{     
+        grid-template-columns: 1fr;
+    }
+
+    .seccionPerfil{
+        grid-template-columns: 1fr;
+    }
+
+    .contentFormRegistro{
+        width: 80%;
+    }
+
+    .index{
+        width: 80%;
+    }
+
+    
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: var(--fuente);
+        font-size: 16px;
+    }
+    
+   
+    table, th, td {/*Mirar tamaño*/
+        font-size: 16px; 
+    }
+
+    .tarifinhas{
+        display: none;
+    }
+    
+    .perfil_album {
+        width: 300px;
+        height: 300px;
+    }
+    
+    
+    header {
+        justify-content: center; 
+        flex-direction: column; 
+    }
+    
+    nav ul {
+        list-style-type: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+    }
+    
+    nav ul li {
+        padding: 0.5em; 
+    }
+    
+    nav ul li a {
+        font-size: 1em;
+    }
+    
+   
+    .site-title {
+        font-size: 40px; 
+        margin-left: 30px;
+    }
+    
+   
+    #buscador {
+        width: 100%; 
+         
+        font-size: 1.12em;
+    }
+
+    #buscadorRapido{
+        width: 40px;
+        height: 40px;
+    }
+   
+    .foto_perfil {
+        width: 50px;
+        height: 50px;
+        margin: 10px 5px;
+    }
+    
+    article a {
+        font-size: 20px; 
+    }
+   
+    input[type="submit"] {
+        padding: 0.5em; 
+        font-size: 1.2em;
+    }
+    
+   
+    .navegadores {
+        padding: 0.2em;
+        font-size: 18px;
+        height: 20px;
+    }
+     form div p label {
+        margin-right: 10px;
+    }
+   
+    h2 {
+        font-size: 1.4em; 
+    }
+    
+    h3 {
+        font-size: 1.8em; 
+    }
+    
+    
+    .detalle {
+        background-color: #ad885e;
+        display: block;
+        position: relative;
+        left: 0;
+        bottom: 0;
+        background-size: cover;
+        width: 100%;
+
+    }
+    
+    
+    footer {
+        background-color: #ad885e;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+    
+    footer p {
+        font-size: 20px; 
+    }
+    
+}
+
+    

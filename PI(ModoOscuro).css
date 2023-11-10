@@ -1,0 +1,108 @@
+@import"PI.css";
+.contentForm{
+    border:  2px solid #ffffff;
+}
+body{
+    background-color: #383129;  
+}
+.site-title {
+    color:#ffffff;
+  }
+  form div p label {
+   color:#ffffff;
+  }
+  
+
+.estiloform {
+ 
+  background-color:#7d6d5b;
+    color:white;
+    font-weight: 700;
+}
+.contentFormRegistro {
+    border: 2px solid rgb(230, 218, 189);
+    padding: 20px;
+    width: 40%;
+  }
+  input[type="submit"] {
+    background-color: #7d6d5b;
+    color: white;
+    font-weight: 700;
+  }
+  input[type="submit"]:hover {
+    background-color: white;
+    color: #7d6d5b;
+    font-weight: 700;
+  }
+  article a h3 {
+    font-family: var(--fuente);;
+    font-size: 35px;
+    color: black;
+  }
+  h1{
+    color:white;
+  }
+  h3{
+    color:rgb(245, 194, 167);
+  }
+  nav ul li a:hover {
+    background-color: white;
+    color: #7d6d5b;
+    font-weight: 700;
+  }
+  nav ul li a {
+    background-color:#7d6d5b ;
+    color:white;
+    font-weight: 700;
+  }
+  .index {
+    border:none;
+    background-color: #b59f87;
+  }
+  article p {
+    color: black;
+  }
+  .navegadores {
+    background-color: #7d6d5b;
+    color: white;
+    font-weight: 700;
+  }
+  .navegadores:hover {
+    background-color: white;
+    color: #7d6d5b;
+    font-weight: 700;
+  }
+
+  .detallesImagen {
+    border:none;
+    background-color: #b59f87;
+  }
+  table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+    width: 30%;
+    font-family: "SIMPLIFICA";
+    font-size: 1.2em;
+    background-color: #7d6d5b;
+    color: white;
+  }
+ 
+  h2 {
+    color: white;
+  }
+  footer {
+    background-color: #7d6d61;
+    
+  }
+  div div p{
+   color: white;
+}
+.material-symbols-outlined{
+  background-color: #7d6d5b;
+  color: white;
+
+}.material-symbols-outlined:hover{
+  background-color: white;
+  color: #7d6d5b;
+
+}
