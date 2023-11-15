@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <?php
 
+if(!isset($_COOKIE["usuario"]) && !isset($_SESSION["nombre"])){
+   header('Location: index.php');
+}
+
 include "Header_Log.php";
 
 ?>
