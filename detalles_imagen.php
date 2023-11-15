@@ -3,7 +3,10 @@
 <?php
 
 include "Header_Log.php";
-
+session_start();
+if(!isset($_COOKIE["usuario"])){//si no esta registrado
+    header('Location: error_de_login.html');
+}
 ?>
 
 <body>

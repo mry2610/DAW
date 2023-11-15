@@ -1,4 +1,7 @@
 <?php
+
+    session_start();
+
     //Array con las cuentas
     $cuentas = array(
         array("name" => "Usuario1", "contra" => "123"),
@@ -32,9 +35,24 @@
             header('Location: Login.php?error=1');
         }
         else {
-            header('Location: Mi_perfil.php');
+            if(isset($_POST["recordar"])==1) {//si nos pide recordar la la cuenta
+                setcookie("usuario", $Nombre, time() +(90 * 24 * 60 * 60));
+                setcookie("hora_cierre",date("Y-m-d H:i:s"), 0);
+                $_SESSION["ultima_Conexion"] = $_COOKIE["hora_cierre"];
+                $_SESSION["nombre"]=$_COOKIE["usuario"];
+            }
+            else{
+                //session_destroy();
+                setcookie("usuario", $Nombre, time() -3600);
+                $_SESSION["ultima_Conexion"] = date("Y-m-d H:i:s");
+                $_SESSION["nombre"]=$Nombre;
+
+            }
+            header('Location: Pagina_Principal_Logeado.php');
         }
     }else {
         //Volvemos con el argumento de error
         header('Location: Login.php?error=1');
     }
+
+    

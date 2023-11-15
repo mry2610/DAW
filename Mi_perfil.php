@@ -1,8 +1,28 @@
 <!DOCTYPE html>
 
 <?php
-
+session_start();
 include "Header_Log.php";
+
+if (isset($_GET['eliminar_cookie'])) {
+    // Si se recibe el parámetro 'eliminar_cookie' en la URL, entonces eliminamos la cookie.
+    setcookie("usuario", $_SESSION["usuario"], time() -3600);
+    session_destroy();
+    header('Location: index.php');
+}
+
+if(date("H:i:s") > '6:00:0' && date("H:i:s")<'11:59:59') {
+    echo "<p> Buenos días {$_SESSION["nombre"]} </p>";
+}
+else if(date("H:i:s") > '12:00:0' && date("H:i:s")<'15:59:59'){
+    echo "<p> Hola {$_SESSION["nombre"]} </p>";
+}
+else if(date("H:i:s") > '16:00:0' && date("H:i:s")<'19:59:59'){
+    echo "<p> Buenas tardes {$_SESSION["nombre"]} </p>";
+}
+else{
+    echo "<p> Buenas noches {$_SESSION["nombre"]} </p>";
+}
 
 ?>
 
@@ -24,7 +44,7 @@ include "Header_Log.php";
                 <a href='crearAlbum.php' class="navegadores">crear Album</a>
                 <a href='Solicitar_album.php' class="navegadores">Solicitar album</a>
                 <a href="DadoBaja.html" class="navegadores">Darme de baja</a>
-                <a href='Pagina_Principal_Logeado.php' class="navegadores">Salir</a>
+                <a href='Mi_perfil.php?eliminar_cookie=true' class="navegadores">Cerrar sesión</a>
             </div>
         </div>
        

@@ -3,6 +3,10 @@
 <?php
 
 include "Header.php";
+session_start();  
+if(isset($_COOKIE["usuario"])){
+   header('Location: Pagina_Principal_Logeado.php');
+}
 
 ?>
 
@@ -18,7 +22,7 @@ include "Header.php";
             if($i%2==0){
              echo <<<hereDOC
               <article class="index">
-              <a href="error_de_login.html">
+              <a href="detalles_imagen.php?id=$i">
                  <img src="https://live.staticflickr.com/65535/52270993783_05232b064c_n.jpg" alt="taj mahal" class="roma">
               </a>
               <p>Titulo: Taj Mahal</p>
@@ -30,7 +34,7 @@ include "Header.php";
             }else{
              echo <<<hereDOC
               <article class="index">
-              <a href="error_de_login.html">
+              <a href="detalles_imagen.php?id=$i">
                  <img src="https://live.staticflickr.com/65535/51453242037_68388eb25b_n.jpg" alt="taj mahal" class="roma"></a>
               <p>Titulo: Catedral de Santiago </p>
               <p>Fecha: 23/09/2023</p> 

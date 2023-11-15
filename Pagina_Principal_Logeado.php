@@ -1,15 +1,29 @@
 <!--Pagina principal-->
 <!DOCTYPE html>
 <?php
-
+session_start();
 include "Header_Log.php";
+
+
+
+if(!isset($_COOKIE["usuario"]) && !isset($_SESSION["nombre"])){
+    header('Location: index.php');
+}
 
 ?>
 <body>
 
+        <?php
+            if(isset($_COOKIE["usuario"])){
+                echo "<p> Otra vez tu por aquí {$_COOKIE["usuario"]}, buenos días </p>";
+                echo "<p> Su ultima visita fue a las {$_COOKIE["hora_cierre"]}</p>";
+            }
+        ?>
     <!--Ultimas 5 imagenes-->
     <main>  
         <?php
+
+        
          echo '<div class="inicio">';
             for ($i = 0; $i <= 4; $i++) {
                         if($i%2==0){
