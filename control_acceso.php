@@ -37,9 +37,8 @@
         else {
             if(isset($_POST["recordar"])==1) {//si nos pide recordar la la cuenta
                 setcookie("usuario", $Nombre, time() +(90 * 24 * 60 * 60));
-                setcookie("hora_cierre",date("Y-m-d H:i:s"), 0);
-                $_SESSION["ultima_Conexion"] = $_COOKIE["hora_cierre"];
-                $_SESSION["nombre"]=$_COOKIE["usuario"];
+                setcookie("hora_cierre",date("Y-m-d H:i:s"), time() +(90 * 24 * 60 * 60));
+                $_SESSION["nombre"]=$Nombre;
             }
             else{
                 //session_destroy();

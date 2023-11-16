@@ -1,4 +1,4 @@
-<!--Pagina principal-->
+    <!--Pagina principal-->
 <!DOCTYPE html>
 <?php
 session_start();
@@ -17,6 +17,8 @@ if(!isset($_COOKIE["usuario"]) && !isset($_SESSION["nombre"])){
             if(isset($_COOKIE["usuario"])){
                 echo "<p> Otra vez tu por aquí {$_COOKIE["usuario"]}, buenos días </p>";
                 echo "<p> Su ultima visita fue a las {$_COOKIE["hora_cierre"]}</p>";
+
+                setcookie("hora_cierre",date("Y-m-d H:i:s"), time() +(90 * 24 * 60 * 60));
             }
         ?>
     <!--Ultimas 5 imagenes-->
