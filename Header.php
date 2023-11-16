@@ -4,12 +4,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acceso al usuario</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="PI.css?2.0">
+    <?php
+    if(isset($_COOKIE["estilo"]) || isset($_SESSION["estilos"])){
+        echo'<link rel="stylesheet" href="' . $_SESSION["estilos"] . '">';
+    }
+    else{
+        echo'<link rel="stylesheet" href="PI.css">';
+    }
+    ?>
+
     <link rel="alternate stylesheet" href="PI(ModoOscuro).css" title="modo oscuro">
     <link rel="alternate stylesheet" href="PI(AltoContraste).css" title="modo alto contraste">
     <link rel="alternate stylesheet" href="PI(LetraGrande).css" title="modo de letra grande">
     <link rel="alternate stylesheet" href="PI(LetraYContraste).css" title="modo de letra grande y alto contraste">
     <link rel="stylesheet" href="PI(impresión).css" media="print" >
+    
+    
+    
+    
 </head>
 <body>
 <header> <!--Boton que te lleve al Formulario de acceso-->
