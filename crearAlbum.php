@@ -2,10 +2,7 @@
 
 <?php
 
-if(!isset($_COOKIE["usuario"]) && !isset($_SESSION["nombre"])){
-    header('Location: index.php');
-}
-
+session_start();
 include "Header_Log.php";
 
 ?>

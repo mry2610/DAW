@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <?php
+session_start();
+include "Header_Log.php";
+
 
 if(!isset($_COOKIE["usuario"]) && !isset($_SESSION["nombre"])){
     header('Location: Formulario_de_imagen.php');
 }
 
-include "Header_Log.php";
 
 ?>
 
