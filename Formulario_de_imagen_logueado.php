@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-include "Header_Log.php";
+include "Header.php";
 
 
 if(!isset($_COOKIE["usuario"]) && !isset($_SESSION["nombre"])){

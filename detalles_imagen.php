@@ -5,7 +5,7 @@ session_start();
 if(!isset($_COOKIE["usuario"]) && !isset($_SESSION["nombre"])){
     header('Location: index.php');
 }
-include "Header_Log.php";
+include "Header.php";
 
 if(!isset($_COOKIE["usuario"])){//si no esta registrado
     header('Location: error_de_login.html');

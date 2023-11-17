@@ -9,7 +9,7 @@ if(!isset($_COOKIE["usuario"]) && !isset($_SESSION["nombre"])){
 
 
 
-include "Header_Log.php";
+include "Header.php";
 
 if (isset($_GET['eliminar_cookie'])) {
     // Si se recibe el parámetro 'eliminar_cookie' en la URL, entonces eliminamos la cookie.

@@ -4,12 +4,8 @@
 
 
 session_start();  
-if(isset($_COOKIE["usuario"]) || isset($_SESSION["estilos"])){
-   include "Header_Log.php";
-}
-else{
-   include "Header.php";
-}
+
+include "Header.php";
 
 ?>
 

@@ -6,7 +6,7 @@ session_start();
 if(!isset($_COOKIE["usuario"]) && !isset($_SESSION["nombre"])){
     header('Location: index.php');
 }
-include "Header_Log.php";
+include "Header.php";
 
 ?>
 
