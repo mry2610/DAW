@@ -5,8 +5,12 @@
     <title>Solicitar album</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <?php
-    if(isset($_COOKIE["estilo"]) || isset($_SESSION["estilos"])){
+
+    if(isset($_SESSION["estilos"])){
         echo'<link rel="stylesheet" href="' . $_SESSION["estilos"] . '">';
+    }
+    else if(isset($_COOKIE["estilo"])){
+        echo'<link rel="stylesheet" href="' . $_COOKIE["estilo"] . '">';
     }
     else{
         echo'<link rel="stylesheet" href="PI.css">';

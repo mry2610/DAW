@@ -4,11 +4,11 @@
 
 
 session_start();  
-if(!isset($_COOKIE["usuario"])){
-   include "Header.php";
+if(isset($_COOKIE["usuario"]) || isset($_SESSION["estilos"])){
+   include "Header_Log.php";
 }
 else{
-   include "Header_Log.php";
+   include "Header.php";
 }
 
 ?>
@@ -72,7 +72,7 @@ else{
 </main>
 
 <?php
-if(isset($_COOKIE["usuario"])){
+if(isset($_COOKIE["usuario"]) || isset($_SESSION["estilos"])){
    include "footer.php";
 }
 
