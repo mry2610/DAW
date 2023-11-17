@@ -60,7 +60,7 @@
                 setcookie("hora_cierre", date("Y-m-d H:i:s"), time() -3600);
 
             }
-            header('Location: Pagina_Principal_Logeado.php');
+            header('Location: index.php');
         }
     }else {
         //Volvemos con el argumento de error

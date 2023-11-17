@@ -2,16 +2,38 @@
 <!DOCTYPE html>
 <?php
 
-include "Header.php";
+
 session_start();  
-if(isset($_COOKIE["usuario"])){
-   header('Location: Pagina_Principal_Logeado.php');
+if(!isset($_COOKIE["usuario"])){
+   include "Header.php";
+}
+else{
+   include "Header_Log.php";
 }
 
 ?>
 
 <body>
-   
+<?php
+        if(isset($_COOKIE["usuario"])){//si no tiene cookie de usuario, significa que no recuerda su registro,
+            //por lo que solo se activará el if cuando entre despues de haber vuelto a iniciar sesion
+            if(date("H:i:s") > '06:00:0' && date("H:i:s")<'11:59:59') {
+                echo "<p class='mensaje'> Buenos días {$_COOKIE["usuario"]} </p>";
+            }
+            else if(date("H:i:s") > '12:00:0' && date("H:i:s")<'15:59:59'){
+                echo "<p class='mensaje'> Hola {$_COOKIE["usuario"]} </p>";
+            }
+            else if(date("H:i:s") > '16:00:0' && date("H:i:s")<'19:59:59'){
+                echo "<p class='mensaje'> Buenas tardes {$_COOKIE["usuario"]} </p>";
+            }
+            else{
+                echo "<p class='mensaje'> Buenas noches {$_COOKIE["usuario"]} </p>";
+            }
+            echo "<p class='mensaje'> Su ultima visita fue a las {$_COOKIE["hora_cierre"]}</p>";
+
+            setcookie("hora_cierre",date("Y-m-d H:i:s"), time() +(90 * 24 * 60 * 60));
+        }           
+        ?>
 
 
     <!--Ultimas 5 imagenes-->
@@ -48,6 +70,13 @@ if(isset($_COOKIE["usuario"])){
                 ?>
        
 </main>
+
+<?php
+if(isset($_COOKIE["usuario"])){
+   include "footer.php";
+}
+
+?>
 
 </body>
 
