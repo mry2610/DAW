@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <?php
 
-if(!isset($_COOKIE["usuario"]) && !isset($_SESSION["nombre"])){
-   header('Location: index.php');
-}
+session_start();
 
 include "Header.php";
 
@@ -32,27 +30,53 @@ include "Header.php";
             for ($i = 1; $i <= 3; $i++) {
                 
                if($i%2==0){
-                echo <<<hereDOC
-                 <article class="index">
-                 <a href="error_de_login.html">
-                    <img src="https://live.staticflickr.com/65535/52270993783_05232b064c_n.jpg" alt="taj mahal" class="roma">
-                 </a>
-                 <p>Titulo: Taj Mahal</p>
-                 <p>Fecha: 23/09/2023</p> 
-                 <p>País: India</p>
-                 </article>
-                hereDOC;
+                  if(isset($_COOKIE["usuario"]) ||isset($_SESSION["nombre"])){echo <<<hereDOC
+                     <article class="index">
+                     <a href="detalles_imagen.php?id=$i">
+                        <img src="https://live.staticflickr.com/65535/52270993783_05232b064c_n.jpg" alt="taj mahal" class="roma">
+                     </a>
+                     <p>Titulo: Taj Mahal</p>
+                     <p>Fecha: 23/09/2023</p> 
+                     <p>País: India</p>
+                     </article>
+                     hereDOC;
+                  }
+                  
+                else{echo <<<hereDOC
+                  <article class="index">
+                  <a href="error_de_login.html">
+                     <img src="https://live.staticflickr.com/65535/52270993783_05232b064c_n.jpg" alt="taj mahal" class="roma">
+                  </a>
+                  <p>Titulo: Taj Mahal</p>
+                  <p>Fecha: 23/09/2023</p> 
+                  <p>País: India</p>
+                  <p>País: holi</p>
+                  </article>
+                 hereDOC;}
                
                }else{
-                echo <<<hereDOC
+                  if(isset($_COOKIE["usuario"]) ||isset($_SESSION["nombre"])){
+                     echo <<<hereDOC
                  <article class="index">
-                 <a href="error_de_login.html">
+                 <a href="detalles_imagen.php?id=$i">
                     <img src="https://live.staticflickr.com/65535/51453242037_68388eb25b_n.jpg" alt="taj mahal" class="roma"></a>
                  <p>Titulo: Catedral de Santiago </p>
                  <p>Fecha: 23/09/2023</p> 
                  <p>País: España</p>
                  </article>
                 hereDOC;
+                  }else{
+                     echo <<<hereDOC
+                     <article class="index">
+                     <a href="error_de_login.html">
+                        <img src="https://live.staticflickr.com/65535/51453242037_68388eb25b_n.jpg" alt="taj mahal" class="roma"></a>
+                     <p>Titulo: Catedral de Santiago </p>
+                     <p>Fecha: 23/09/2023</p> 
+                     <p>País: España</p>
+                     </article>
+                    hereDOC;
+                  }
+                
                
                }
                 
@@ -60,30 +84,58 @@ include "Header.php";
             echo '</div>';
             echo '<div class="seccion">';
             for ($i = 4; $i <= 6; $i++) {
-                if($i%2==0){
-                echo <<<hereDOC
-                 <article class="index">
-                 <a href="error_de_login.html">
-                    <img src="https://live.staticflickr.com/65535/52270993783_05232b064c_n.jpg" alt="taj mahal" class="roma">
-                 </a>
-                 <p>Titulo: Taj Mahal</p>
-                 <p>Fecha: 23/09/2023</p> 
-                 <p>País: India</p>
-                 </article>
-                hereDOC;
+                
+               if($i%2==0){
+                  if(isset($_COOKIE["usuario"]) ||isset($_SESSION["nombre"])){echo <<<hereDOC
+                     <article class="index">
+                     <a href="detalles_imagen.php?id=$i">
+                        <img src="https://live.staticflickr.com/65535/52270993783_05232b064c_n.jpg" alt="taj mahal" class="roma">
+                     </a>
+                     <p>Titulo: Taj Mahal</p>
+                     <p>Fecha: 23/09/2023</p> 
+                     <p>País: India</p>
+                     </article>
+                     hereDOC;
+                  }
+                  
+                else{echo <<<hereDOC
+                  <article class="index">
+                  <a href="error_de_login.html">
+                     <img src="https://live.staticflickr.com/65535/52270993783_05232b064c_n.jpg" alt="taj mahal" class="roma">
+                  </a>
+                  <p>Titulo: Taj Mahal</p>
+                  <p>Fecha: 23/09/2023</p> 
+                  <p>País: India</p>
+                  <p>País: holi</p>
+                  </article>
+                 hereDOC;}
                
                }else{
-                echo <<<hereDOC
+                  if(isset($_COOKIE["usuario"]) ||isset($_SESSION["nombre"])){
+                     echo <<<hereDOC
                  <article class="index">
-                 <a href="error_de_login.html">
+                 <a href="detalles_imagen.php?id=$i">
                     <img src="https://live.staticflickr.com/65535/51453242037_68388eb25b_n.jpg" alt="taj mahal" class="roma"></a>
-                 <p>Título: Resultado   $i  </p>
-                 <p>Fecha: 23/09/2023</p>
-                 <p>País: Ejemplo</p>
+                 <p>Titulo: Catedral de Santiago </p>
+                 <p>Fecha: 23/09/2023</p> 
+                 <p>País: España</p>
                  </article>
                 hereDOC;
+                  }else{
+                     echo <<<hereDOC
+                     <article class="index">
+                     <a href="error_de_login.html">
+                        <img src="https://live.staticflickr.com/65535/51453242037_68388eb25b_n.jpg" alt="taj mahal" class="roma"></a>
+                     <p>Titulo: Catedral de Santiago </p>
+                     <p>Fecha: 23/09/2023</p> 
+                     <p>País: España</p>
+                     </article>
+                    hereDOC;
+                  }
+                
                
                }
+                
             }
             echo '</div>';
 
@@ -92,38 +144,60 @@ include "Header.php";
             $consulta_busqueda = $_GET['nombre'];
 
             // Mostrar la consulta de búsqueda del usuario
-           
             echo <<<hereDOC
-             <p>Resultados para: $consulta_busqueda</p>
-            hereDOC;
-            // Realizar una búsqueda o consulta en función de la entrada del usuario
-            // Puedes utilizar esta información para obtener datos de una base de datos u otra fuente
-            // Por ahora, mostraremos algunos resultados de búsqueda ficticios
+            <p>Resultados para: $consulta_busqueda</p>
+           hereDOC;
             echo '<div class="seccion">';
             for ($i = 1; $i <= 3; $i++) {
                 
                if($i%2==0){
-                echo <<<hereDOC
-                 <article class="index">
-                 <a href="error_de_login.html">
-                    <img src="https://live.staticflickr.com/65535/52270993783_05232b064c_n.jpg" alt="taj mahal" class="roma">
-                 </a>
-                 <p>Titulo: Taj Mahal</p>
-                 <p>Fecha: 23/09/2023</p> 
-                 <p>País: India</p>
-                 </article>
-                hereDOC;
+                  if(isset($_COOKIE["usuario"]) ||isset($_SESSION["nombre"])){echo <<<hereDOC
+                     <article class="index">
+                     <a href="detalles_imagen.php?id=$i">
+                        <img src="https://live.staticflickr.com/65535/52270993783_05232b064c_n.jpg" alt="taj mahal" class="roma">
+                     </a>
+                     <p>Titulo: Taj Mahal</p>
+                     <p>Fecha: 23/09/2023</p> 
+                     <p>País: India</p>
+                     </article>
+                     hereDOC;
+                  }
+                  
+                else{echo <<<hereDOC
+                  <article class="index">
+                  <a href="error_de_login.html">
+                     <img src="https://live.staticflickr.com/65535/52270993783_05232b064c_n.jpg" alt="taj mahal" class="roma">
+                  </a>
+                  <p>Titulo: Taj Mahal</p>
+                  <p>Fecha: 23/09/2023</p> 
+                  <p>País: India</p>
+                  <p>País: holi</p>
+                  </article>
+                 hereDOC;}
                
                }else{
-                echo <<<hereDOC
+                  if(isset($_COOKIE["usuario"]) ||isset($_SESSION["nombre"])){
+                     echo <<<hereDOC
                  <article class="index">
-                 <a href="error_de_login.html">
+                 <a href="detalles_imagen.php?id=$i">
                     <img src="https://live.staticflickr.com/65535/51453242037_68388eb25b_n.jpg" alt="taj mahal" class="roma"></a>
                  <p>Titulo: Catedral de Santiago </p>
                  <p>Fecha: 23/09/2023</p> 
                  <p>País: España</p>
                  </article>
                 hereDOC;
+                  }else{
+                     echo <<<hereDOC
+                     <article class="index">
+                     <a href="error_de_login.html">
+                        <img src="https://live.staticflickr.com/65535/51453242037_68388eb25b_n.jpg" alt="taj mahal" class="roma"></a>
+                     <p>Titulo: Catedral de Santiago </p>
+                     <p>Fecha: 23/09/2023</p> 
+                     <p>País: España</p>
+                     </article>
+                    hereDOC;
+                  }
+                
                
                }
                 
@@ -131,30 +205,58 @@ include "Header.php";
             echo '</div>';
             echo '<div class="seccion">';
             for ($i = 4; $i <= 6; $i++) {
-                if($i%2==0){
-                echo <<<hereDOC
-                 <article class="index">
-                 <a href="error_de_login.html">
-                    <img src="https://live.staticflickr.com/65535/52270993783_05232b064c_n.jpg" alt="taj mahal" class="roma">
-                 </a>
-                 <p>Titulo: Taj Mahal</p>
-                 <p>Fecha: 23/09/2023</p> 
-                 <p>País: India</p>
-                 </article>
-                hereDOC;
+                
+               if($i%2==0){
+                  if(isset($_COOKIE["usuario"]) ||isset($_SESSION["nombre"])){echo <<<hereDOC
+                     <article class="index">
+                     <a href="detalles_imagen.php?id=$i">
+                        <img src="https://live.staticflickr.com/65535/52270993783_05232b064c_n.jpg" alt="taj mahal" class="roma">
+                     </a>
+                     <p>Titulo: Taj Mahal</p>
+                     <p>Fecha: 23/09/2023</p> 
+                     <p>País: India</p>
+                     </article>
+                     hereDOC;
+                  }
+                  
+                else{echo <<<hereDOC
+                  <article class="index">
+                  <a href="error_de_login.html">
+                     <img src="https://live.staticflickr.com/65535/52270993783_05232b064c_n.jpg" alt="taj mahal" class="roma">
+                  </a>
+                  <p>Titulo: Taj Mahal</p>
+                  <p>Fecha: 23/09/2023</p> 
+                  <p>País: India</p>
+                  <p>País: holi</p>
+                  </article>
+                 hereDOC;}
                
                }else{
-                echo <<<hereDOC
+                  if(isset($_COOKIE["usuario"]) ||isset($_SESSION["nombre"])){
+                     echo <<<hereDOC
                  <article class="index">
-                 <a href="error_de_login.html">
+                 <a href="detalles_imagen.php?id=$i">
                     <img src="https://live.staticflickr.com/65535/51453242037_68388eb25b_n.jpg" alt="taj mahal" class="roma"></a>
-                 <p>Título: Resultado   $i  </p>
-                 <p>Fecha: 23/09/2023</p>
-                 <p>País: Ejemplo</p>
+                 <p>Titulo: Catedral de Santiago </p>
+                 <p>Fecha: 23/09/2023</p> 
+                 <p>País: España</p>
                  </article>
                 hereDOC;
+                  }else{
+                     echo <<<hereDOC
+                     <article class="index">
+                     <a href="error_de_login.html">
+                        <img src="https://live.staticflickr.com/65535/51453242037_68388eb25b_n.jpg" alt="taj mahal" class="roma"></a>
+                     <p>Titulo: Catedral de Santiago </p>
+                     <p>Fecha: 23/09/2023</p> 
+                     <p>País: España</p>
+                     </article>
+                    hereDOC;
+                  }
+                
                
                }
+                
             }
             echo '</div>';}
             else{

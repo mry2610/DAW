@@ -43,7 +43,7 @@ if ($conn->connect_error) {
                 <div>
                     <p>
                     <label>País:</label>
-                    <select name="pais">
+                    <select name="nombre">
                         <?php
                             // Obtener la lista de países desde la tabla Paises
                             $query = "SELECT * FROM Paises";
