@@ -1,19 +1,98 @@
-<!--mostrar toda la información ordenada-->
-<!-- Registro de usuario-->
 
-<!--truquele to wapo: poner ! y enter/tabulador-->
+<?php
+// Configuración de la conexión a la base de datos
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "pibd";
 
-<!--no usar align, eso se usa en CSS-->
-<!--no usar br-->
-<!--html validator de w3c-->
-<!--Web developer extensión-->
+// Crear la conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar la conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+?>
 <!DOCTYPE html>
 <?php
 
 include "Header.php";
 
 ?>
+<!DOCTYPE html>
+<html lang="es">
 <body>
+    <h2>Registro de Usuario</h2>
+    
+    <form action="respuesta_Registro_Usuario.php" method="post">
+
+         <div>
+        <p><label for="nomUsuario">Nombre de Usuario:</label><br>
+        <input type="text" name="nomUsuario"  class="estiloform" ></p>              
+                        
+        </div>
+      
+
+        <label for="clave">Contraseña:</label>
+        <input type="text" name="clave" ><br>
+
+        <label for="email">Email:</label>
+        <input type="text" name="email" ><br>
+
+        <label for="sexo">Sexo:</label>
+        <select name="sexo">
+            <option value="1">Masculino</option>
+            <option value="0">Femenino</option>
+            <option value="2">No Responder</option>
+        </select><br>
+
+        <label for="fNacimiento">Fecha de Nacimiento:</label>
+        <input type="date" name="fNacimiento" required><br>
+
+        <label for="ciudad">Ciudad:</label>
+        <input type="text" name="ciudad"><br>
+ 
+        <label for="pais">País:</label>
+        <select name="pais">
+            <?php
+                // Obtener la lista de países desde la tabla Paises
+                $query = "SELECT * FROM Paises";
+                $result = $conn->query($query);
+
+                // Mostrar los países en la lista desplegable
+                while ($row = $result->fetch_assoc()) {
+                    echo "<option value='" . $row['IdPais'] . "'>" . $row['NomPais'] . "</option>";
+                }
+            ?>
+        </select><br>
+
+        <label for="foto">Foto (URL):</label>
+        <input type="text" name="foto"><br>
+
+        <label for="fRegistro">Fecha de Registro:</label>
+        <input type="text" name="fRegistro" value="<?php echo date('Y-m-d H:i:s'); ?>" readonly><br> 
+
+       <label for="estilo">Estilo:</label>
+        <select name="estilo">
+        <?php
+                // Obtener la lista de países desde la tabla Paises
+                $query = "SELECT * FROM estilos";
+                $result = $conn->query($query);
+
+                // Mostrar los países en la lista desplegable
+                while ($row = $result->fetch_assoc()) {
+                    echo "<option value='" . $row['IdEstilo'] . "'>" . $row['Nombre'] . "</option>";
+                }
+            ?>
+        </select><br> 
+        
+
+        <input type="submit" value="Registrar">
+    </form>
+</body>
+</html>
+<!-- <body>
     <main>
         <h1>Registro nuevo usuario</h1>
         <div class="formRegistro">
@@ -22,7 +101,7 @@ include "Header.php";
                 <form action="respuesta_Registro_Usuario.php" method="post" >
                     
                     <div>
-                        <!-- div es un contenedor que sirve para poner de manera más ordenada el formulario que queremos crear-->
+                        
                         <p><label>Nombre:</label><br>
                         <input type="text" name="nombre" id="nombre" class="estiloform"></p>
                     </div>
@@ -84,5 +163,5 @@ include "Header.php";
         </div>
         
     </main>
-</body>
+</body> -->
 </html>
