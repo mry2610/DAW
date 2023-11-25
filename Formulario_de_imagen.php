@@ -4,6 +4,22 @@ session_start();
 include "Header.php";
 
 ?>
+<?php
+// Configuración de la conexión a la base de datos
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "pibd";
+
+// Crear la conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar la conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+?>
 <body>
     <main>
         <h1>Busqueda detallada</h1>
@@ -26,8 +42,19 @@ include "Header.php";
                 
                 <div>
                     <p>
-                    <label>País:</label><br>
-                    <input type="text" name="pais" id="pais" class="estiloform">
+                    <label>País:</label>
+                    <select name="pais">
+                        <?php
+                            // Obtener la lista de países desde la tabla Paises
+                            $query = "SELECT * FROM Paises";
+                            $result = $conn->query($query);
+
+                            // Mostrar los países en la lista desplegable
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<option value='" . $row['IdPais'] . "'>" . $row['NomPais'] . "</option>";
+                            }
+                        ?>
+                    </select>
                     </p>
                 </div>
                 
