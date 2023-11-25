@@ -51,7 +51,7 @@ if ($conn->connect_error) {
 
                             // Mostrar los países en la lista desplegable
                             while ($row = $result->fetch_assoc()) {
-                                echo "<option value='" . $row['IdPais'] . "'>" . $row['NomPais'] . "</option>";
+                                echo "<option value='" . $row['NomPais'] . "'>" . $row['NomPais'] . "</option>";
                             }
                         ?>
                     </select>
