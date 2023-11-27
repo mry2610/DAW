@@ -2,14 +2,21 @@
 
     session_start();
 
-    //Array con las cuentas
-    $cuentas = array(
-        array("name" => "Usuario1", "contra" => "123", "estilo"=>"PI.css"),
-        array("name" => "Usuario2", "contra" => "456", "estilo"=>"PI(ModoOscuro).css"),
-        array("name" => "Usuario3", "contra" => "789", "estilo"=>"PI(LetraGrande).css"),
-        array("name" => "Usuario4", "contra" => "mondongo", "estilo"=>"PI(AltoContraste).css")
-    );
+    //Conectamos la base de datos
+    $id = @mysqli_connect("", "root", "", "pibd");//se conecta a la BD
+    if(mysqli_connect_errno() != 0){
+        echo mysqli_connect_error();
+        exit;
+    }
 
+    $result = mysqli_query($id, "SELECT * FROM usuarios, estilos where Estilo=IdEstilo");
+    if(mysqli_connect_errno() != 0){
+        echo mysqli_connect_error();
+        exit;
+    }
+    
+
+    
     //Compruebo que existen los argumentos
     if((isset($_POST["nombre"])) && (isset($_POST["pass"]))) {
         $Nombre = $_POST["nombre"];
@@ -25,13 +32,17 @@
 
         //Ahora compruebo si es una cuenta registrada
         $Encontrado = false;
-        for ($i = 0; $i < count($cuentas); ++$i) {
-            if (($cuentas[$i]['name'] == $Nombre) && ($cuentas[$i]['contra'] == $Pass)) {
-                $Estilo = $cuentas[$i]['estilo'];
-                $Encontrado = true;
-                break;
+
+        
+
+        while($row = mysqli_fetch_array($result)){
+            if($row['NomUsuario']==$Nombre && $row['Clave']==$Pass){
+                $Encontrado=true;
+
+                $Estilo=$row['Fichero'];//Tocar el tema del estilo
             }
         }
+        
 
         if ($Encontrado == false) {
             //Volvemos con el argumento de error

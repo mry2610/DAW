@@ -7,6 +7,12 @@ session_start();
 
 include "Header.php";
 
+$id = @mysqli_connect("", "root", "", "pibd");//se conecta a la BD
+if(mysqli_connect_errno() != 0){
+    echo mysqli_connect_error();
+    exit;
+}
+
 ?>
 
 <body>
@@ -35,36 +41,32 @@ include "Header.php";
     <!--Ultimas 5 imagenes-->
     <main>
         <?php 
-           echo '<div class="inicio">';
-           for ($i = 1; $i <= 5; $i++) {     
-            if($i%2==0){
-             echo <<<hereDOC
-              <article class="index">
-              <a href="detalles_imagen.php?id=$i">
-                 <img src="https://live.staticflickr.com/65535/52270993783_05232b064c_n.jpg" alt="taj mahal" class="roma">
-              </a>
-              <p>Titulo: Taj Mahal</p>
-              <p>Fecha: 23/09/2023</p> 
-              <p>País: India</p>
-              </article>
-             hereDOC;
-            
-            }else{
-             echo <<<hereDOC
-              <article class="index">
-              <a href="detalles_imagen.php?id=$i">
-                 <img src="https://live.staticflickr.com/65535/51453242037_68388eb25b_n.jpg" alt="taj mahal" class="roma"></a>
-              <p>Titulo: Catedral de Santiago </p>
-              <p>Fecha: 23/09/2023</p> 
-              <p>País: España</p>
-              </article>
-             hereDOC;
-            
+
+            $result = mysqli_query($id, "SELECT Titulo, DATE_FORMAT(Fecha, '%e/%c/%Y') as fecha, Pais, Fichero, NomPais, Alternativo, FRegistro FROM fotos, paises where Pais=idPais ORDER BY FRegistro DESC");
+            if(mysqli_connect_errno() != 0){
+                echo mysqli_connect_error();
+                exit;
             }
+
+           echo '<div class="inicio">';
+           for ($i = 1; $i <= 5 && $row = mysqli_fetch_assoc($result); $i++) {     
+               
+               echo <<<hereDOC
+               <article class="index">
+               <a href="detalles_imagen.php?id=$i">
+                   <img src={$row["Fichero"]} alt={$row["Alternativo"]} class="roma">
+               </a>
+
+               <p>Titulo: {$row["Titulo"]}</p>
+               <p>Fecha: {$row["fecha"]}</p> 
+               <p>País: {$row["NomPais"]}</p>
+               </article>
+
+               hereDOC;
          }
-                echo '</div>';
-                ?>
-       
+         echo '</div>';
+        ?>
+         
 </main>
 
 <?php
