@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php
 
-include "conexBase.php";
 session_start();
 include "Header.php";
 $result = mysqli_query($id, "SELECT * FROM estilos");

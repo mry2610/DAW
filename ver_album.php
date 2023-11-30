@@ -34,21 +34,27 @@ JOIN paises p ON  f.Pais= p.Idpais WHERE a.IdAlbum=$id_Album");
                 $row = mysqli_fetch_array($result);
                 echo"<p>Este album contiene {$cantidadRegistros} imagenes.</p>";
                 echo"<p>Descripcion: {$row['Descripcion']} </p>";
-
             ?>
         </div>
     </div>
 
     <div class="inicio">
     <?php
-        echo"<h2>Imagenes del album</h2>";
+        echo<<<hereDoc
+                <h2>Imagenes del album</h2>
+
+                <article class="index">
+                    <img src={$row['Fichero']} alt={$row['Alternativo']} class='roma'>
+                    <p>País: {$row['NomPais']}</p>
+                </article>
+        hereDoc;
         while($row = mysqli_fetch_array($result)){
 
             echo<<<hereDoc
                 
                 <article class="index">
-                <img src={$row['Fichero']} alt={$row['Alternativo']} class='roma'>
-                <p>País: {$row['NomPais']}</p>
+                    <img src={$row['Fichero']} alt={$row['Alternativo']} class='roma'>
+                    <p>País: {$row['NomPais']}</p>
                 </article>
 
             hereDoc;
