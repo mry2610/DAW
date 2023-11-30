@@ -42,18 +42,18 @@ if(mysqli_connect_errno() != 0){
     <main>
         <?php 
 
-            $result = mysqli_query($id, "SELECT Titulo, DATE_FORMAT(Fecha, '%e/%c/%Y') as fecha, Pais, Fichero, NomPais, Alternativo, FRegistro FROM fotos, paises where Pais=idPais ORDER BY FRegistro DESC");
+            $result = mysqli_query($id, "SELECT IdFoto,Titulo, DATE_FORMAT(Fecha, '%e/%c/%Y') as fecha, Pais, Fichero, NomPais, Alternativo, FRegistro FROM fotos, paises where Pais=idPais ORDER BY FRegistro DESC");
             if(mysqli_connect_errno() != 0){
                 echo mysqli_connect_error();
                 exit;
             }
-
+            
            echo '<div class="inicio">';
            for ($i = 1; $i <= 5 && $row = mysqli_fetch_assoc($result); $i++) {     
-               
+            $idFoto[$i]= $row["IdFoto"];
                echo <<<hereDOC
                <article class="index">
-               <a href="detalles_imagen.php?id=$i">
+               <a href="detalles_imagen.php?id=$idFoto[$i]">
                    <img src={$row["Fichero"]} alt={$row["Alternativo"]} class="roma">
                </a>
 

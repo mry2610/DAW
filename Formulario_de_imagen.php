@@ -29,7 +29,7 @@ if ($conn->connect_error) {
                 <div>
                     <!-- div es un contenedor que sirve para poner de manera más ordenada el formulario que queremos crear-->
                     <p><label>Título:</label>
-                    <input type="text" name="nombre" id="nombre" class="estiloform"></p>
+                    <input type="text" name="buscador" id="nombre" class="estiloform"></p>
                 </div>
     
     
@@ -43,7 +43,7 @@ if ($conn->connect_error) {
                 <div>
                     <p>
                     <label>País:</label>
-                    <select name="nombre">
+                    <select name="pais"  class="estiloform" >
                         <?php
                             // Obtener la lista de países desde la tabla Paises
                             $query = "SELECT * FROM Paises";
@@ -51,7 +51,7 @@ if ($conn->connect_error) {
 
                             // Mostrar los países en la lista desplegable
                             while ($row = $result->fetch_assoc()) {
-                                echo "<option value='" . $row['NomPais'] . "'>" . $row['NomPais'] . "</option>";
+                                echo "<option value='" . $row['IdPais'] . "'>" . $row['NomPais'] . "</option>";
                             }
                         ?>
                     </select>

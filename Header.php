@@ -27,8 +27,9 @@
 <body>
 <header> 
     <?php
-    if(isset($_COOKIE["usuario"]) || isset($_SESSION["estilos"])){//si tienes usuario registrado te sale el header del Usuario
+    if(isset($_COOKIE["usuario"]) || isset($_SESSION["nombre"])){//si tienes usuario registrado te sale el header del Usuario
         echo<<<hereDoc
+        
         <div class="cabezeraizq">
             <img src="Diseño_sin_título-removebg-preview.png" alt="logotipo" class="img">
             <p class="site-title">PI</p>
@@ -38,15 +39,15 @@
             <nav id="menu-ppal">
                 <ul>
                 <!--Boton para el formulario de busqueda-->
-                <li><a href="Formulario_de_imagen_logueado.php"> Busqueda detallada</a></li>
+                <li><a href="Formulario_de_imagen.php"> Busqueda detallada</a></li>
                 </ul>
             </nav>
            
             
-            <form action="resultado_de_busqueda_logueado.php"  class="buscador-form">
+            <form action="resultado_de_busqueda.php"  class="buscador-form">
                 <p><input type="text" name="buscador" id="buscador">
             </form>
-            <a href="resultado_de_busqueda_logueado.php"> <span class="material-symbols-outlined">search </span></a>
+            <a href="resultado_de_busqueda.php"> <span class="material-symbols-outlined">search </span></a>
             <a href="Mi_perfil.php"><p><img src="perfil-mujer-vivo.png" alt="logotipo" class="foto_perfil"></p></a>
         </div>  
         hereDoc;

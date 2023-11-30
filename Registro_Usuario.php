@@ -25,7 +25,7 @@ include "Header.php";
 <body>
     <h2>Registro de Usuario</h2>
     
-    <form action="respuesta_Registro_Usuario.php" method="post">
+    <form action="respuesta_Registro_Usuario.php" >
 
          <div>
         <p><label for="nomUsuario">Nombre de Usuario:</label><br>
@@ -76,13 +76,13 @@ include "Header.php";
        <label for="estilo">Estilo:</label>
         <select name="estilo">
         <?php
-                // Obtener la lista de países desde la tabla Paises
+                // Obtener la lista de países desde la tabla Estilos
                 $query = "SELECT * FROM estilos";
                 $result = $conn->query($query);
 
                 // Mostrar los países en la lista desplegable
                 while ($row = $result->fetch_assoc()) {
-                    echo "<option value='" . $row['IdEstilo'] . "'>" . $row['Nombre'] . "</option>";
+                    echo "<option value='" . $row['Nombre'] . "'>" . $row['Nombre'] . "</option>";
                 }
             ?>
         </select><br> 

@@ -40,6 +40,7 @@
                 $Encontrado=true;
 
                 $Estilo=$row['Fichero'];//Tocar el tema del estilo
+                $Id =$row['IdUsuario'];
             }
         }
         
@@ -54,9 +55,11 @@
             $_SESSION["pass"]=$Pass;
             $_SESSION["ultima_Conexion"] = date("Y-m-d H:i:s");
             $_SESSION["estilos"] = $Estilo;
+            $_SESSION["Id"]= $Id;
 
 
             if(isset($_POST["recordar"])==1) {//si nos pide recordar la la cuenta
+                setcookie("id",$Id, time() +(90 * 24 * 60 * 60));
                 setcookie("usuario", $Nombre, time() +(90 * 24 * 60 * 60));
                 setcookie("pass", $Pass, time() +(90 * 24 * 60 * 60));
                 setcookie("estilo", $Estilo, time() +(90 * 24 * 60 * 60));
@@ -65,6 +68,7 @@
             }
             else{
                 //session_destroy();
+                setcookie("id",$Id,  time() -3600);
                 setcookie("usuario", $Nombre, time() -3600);
                 setcookie("pass", $Pass, time() -3600);
                 setcookie("estilo", $Estilo, time() -3600);

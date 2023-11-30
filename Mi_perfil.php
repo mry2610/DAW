@@ -49,6 +49,8 @@ if (isset($_GET['eliminar_cookie'])) {
                 <a href='Solicitar_album.php' class="navegadores">Solicitar album</a>
                 <a href="DadoBaja.html" class="navegadores">Darme de baja</a>
                 <a href='Mi_perfil.php?eliminar_cookie=true' class="navegadores">Cerrar sesión</a>
+                <a href='Mis_albumes.php' class="navegadores">Mis albumes</a>
+                <a href='Mis_fotos.php' class="navegadores">Mis fotos</a>
             </div>
         </div>
        
