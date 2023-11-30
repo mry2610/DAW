@@ -19,7 +19,7 @@ include "Header.php";
             die("Conexión fallida: " . $conn->connect_error);
          }
          $Id = $_SESSION["Id"];
-         $consulta = "SELECT * FROM albumes as a INNER JOIN Usuarios as u WHERE '$Id'= a.Usuario and a.Usuario= u.IdUsuario";
+         $consulta = "SELECT a.Titulo, a.Descripcion,u.NomUsuario, f.Fichero,a.IdAlbum FROM albumes as a, fotos as f INNER JOIN Usuarios as u WHERE '$Id'= a.Usuario and a.Usuario= u.IdUsuario and f.Album=a.IdAlbum ";
          $result = $conn->query($consulta);
         ?>
 <body>
@@ -39,10 +39,21 @@ include "Header.php";
             if ($numeroDeFilas <= 3) {
               echo'<div class="seccion">';
                for( $i =0; $i<$numeroDeFilas && $row = mysqli_fetch_assoc($result); $i++){
-                    $IdAlbum[$i]= $row["IdAlbum"];
-                    echo <<<hereDOC
-                    
-                    hereDOC;
+                $IdAlbum[$i]= $row["IdAlbum"];
+                echo <<< hereDOC
+                <article class="index">
+                    <a href='ver_album.php?id=$IdAlbum[$i]'>
+                        <img src={$row["Fichero"]}  class="roma">
+                    </a>
+                    <p>{$row["IdAlbum"]}</p>
+                    <p>{$row["Titulo"]}</p>
+                    <p>{$row["Descripcion"]}</p>
+                    <p>{$row["NomUsuario"]}</p>
+                </article>
+                hereDOC;
+               
+                
+                  
                }
             }
             echo '</div>';
