@@ -7,8 +7,7 @@ include "Header.php";
 if(!isset($_COOKIE["usuario"]) && !isset($_SESSION["nombre"])){//si no esta registrado
     header('Location: error_de_login.html');
 }
-?>
-<?php
+
 // Configuración de la conexión a la base de datos
 $servername = "localhost";
 $username = "root";
@@ -61,6 +60,7 @@ if ($id_foto) {
                     echo "<p>País: {$foto['NomPais']}</p>";
                     echo "<p>Álbum: {$foto['titulo']}</p>";
                     echo "<p>Usuario: {$foto['NomUsuario']}</p>";
+                    echo "<a href='ver_album.php?id={$foto['Album']}&df=1' class='navegadores'>Ver album</a>";
                     echo '</article>';
                 } else {
                     echo "No se encontró la foto.";

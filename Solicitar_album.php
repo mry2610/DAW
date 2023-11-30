@@ -1,10 +1,19 @@
 <!DOCTYPE html>
+
 <?php
 session_start();
 if(!isset($_COOKIE["usuario"]) && !isset($_SESSION["nombre"])){
     header('Location: index.php');
 }
 include "Header.php";
+
+$identificador=$_SESSION["idUser"];
+$result = mysqli_query($id, "SELECT * FROM albumes INNER JOIN usuarios ON albumes.Usuario = usuarios.IdUsuario WHERE albumes.Usuario = $identificador");
+
+if(mysqli_connect_errno() != 0){
+    echo mysqli_connect_error();
+    exit;
+}
 
 ?>
 <body>
@@ -57,7 +66,7 @@ include "Header.php";
         
                     <div>
                         <p><label>Color de portada:</label>
-                        <input type="text" name="color" id="color" class="estiloform"></p>
+                        <input type="color" name="color" id="color" class="estiloform"></p>
                     </div>
         
                     <div>
@@ -82,7 +91,13 @@ include "Header.php";
                     <div>
                         <p>
                             <label>Album:</label>
-                            <input type="text" name="album" id="album" class="estiloform">
+                            <select name="album" id="album" class="estiloform">
+                                <?php
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        echo "<option value='" . $row['IdAlbum'] . "'>" . $row['Titulo'] . "</option>";
+                                    }
+                                ?>
+                            </select>
                         </p>
                     </div>
         

@@ -38,9 +38,10 @@
         while($row = mysqli_fetch_array($result)){
             if($row['NomUsuario']==$Nombre && $row['Clave']==$Pass){
                 $Encontrado=true;
-
+                $idUser=$row['IdUsuario'];
                 $Estilo=$row['Fichero'];//Tocar el tema del estilo
-                $Id =$row['IdUsuario'];
+                $foto=$row['Foto'];
+                $Fecha=$row['FRegistro'];
             }
         }
         
@@ -55,23 +56,29 @@
             $_SESSION["pass"]=$Pass;
             $_SESSION["ultima_Conexion"] = date("Y-m-d H:i:s");
             $_SESSION["estilos"] = $Estilo;
-            $_SESSION["Id"]= $Id;
+            $_SESSION["idUser"] = $idUser;
+            $_SESSION["Foto"] = $foto;
+            $_SESSION["FechaIncorporacion"] = $Fecha;
 
 
             if(isset($_POST["recordar"])==1) {//si nos pide recordar la la cuenta
-                setcookie("id",$Id, time() +(90 * 24 * 60 * 60));
+                setcookie("idUser", $idUser, time() +(90 * 24 * 60 * 60));
                 setcookie("usuario", $Nombre, time() +(90 * 24 * 60 * 60));
                 setcookie("pass", $Pass, time() +(90 * 24 * 60 * 60));
                 setcookie("estilo", $Estilo, time() +(90 * 24 * 60 * 60));
+                setcookie("foto", $foto, time() +(90 * 24 * 60 * 60));
+                setcookie("fechaInc", $Fecha, time() +(90 * 24 * 60 * 60));
                 setcookie("hora_cierre",date("Y-m-d H:i:s"), time() +(90 * 24 * 60 * 60));
                 
             }
             else{
                 //session_destroy();
-                setcookie("id",$Id,  time() -3600);
+                setcookie("idUser", $idUser, time() -3600);
                 setcookie("usuario", $Nombre, time() -3600);
                 setcookie("pass", $Pass, time() -3600);
                 setcookie("estilo", $Estilo, time() -3600);
+                setcookie("foto", $foto, time() -3600);
+                setcookie("fechaInc", $Fecha, time() -3600);
                 setcookie("hora_cierre", date("Y-m-d H:i:s"), time() -3600);
 
             }
