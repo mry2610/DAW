@@ -31,25 +31,23 @@ if(mysqli_connect_errno() != 0){
 
 <body>
     <main>
-        <h1>Mi perfil</h1>
+        <h1>Datos del usuario</h1>
 
-        <h2>Mis Datos</h2>
         <?php
             $row = mysqli_fetch_assoc($result);
             echo <<<hereDOC
-                <article class="index">
-                    <img src={$row["Foto"]}  class="roma">
-                    <p>Nombre de usuario: {$row["NomUsuario"]}</p>
-                    <p>Fecha de registro: {$row["FRegistro"]}</p>
-                
-
-
-                </article>
+                <div class="seccion">
+                    <article class="index">
+                        <img src={$row["Foto"]}  class="roma">
+                        <p>Nombre de usuario: {$row["NomUsuario"]}</p>
+                        <p>Fecha de registro: {$row["FRegistro"]}</p>
+                    </article>
+                </div>
             hereDOC;
 
         ?>
         
-        <h3 class="inicio">Mis albumes:</h3>
+        <h3 class="inicio">Albumes del usuario:</h3>
         <div class="seccion">
             <?php
             $result = mysqli_query($id, "SELECT * FROM albumes INNER JOIN usuarios ON albumes.Usuario = usuarios.IdUsuario WHERE Usuario = $id_Usuario");
@@ -62,14 +60,6 @@ if(mysqli_connect_errno() != 0){
 
 
             ?>
-        </div>
-        <div class="seccion">
-            <div class="botonesperfil"> 
-                <a href='crearAlbum.php' class="navegadores">crear Album</a>
-                <a href='Solicitar_album.php' class="navegadores">Solicitar album</a>
-                <a href="DadoBaja.html" class="navegadores">Darme de baja</a>
-                <a href='Mi_perfil.php?eliminar_cookie=true' class="navegadores">Cerrar sesión</a>
-            </div>
         </div>
        
     </main>
