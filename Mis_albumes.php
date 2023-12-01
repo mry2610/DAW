@@ -18,7 +18,7 @@ include "Header.php";
          if ($conn->connect_error) {
             die("Conexión fallida: " . $conn->connect_error);
          }
-         $Id = $_SESSION["Id"];
+         $Id = $_SESSION["idUser"];
          $consulta = "SELECT a.Titulo, a.Descripcion,u.NomUsuario, f.Fichero,a.IdAlbum FROM albumes as a, fotos as f INNER JOIN Usuarios as u WHERE '$Id'= a.Usuario and a.Usuario= u.IdUsuario and f.Album=a.IdAlbum ";
          $result = $conn->query($consulta);
         ?>

@@ -26,7 +26,7 @@ include "Header.php";
     <h2>Registro de Usuario</h2>
     <div class="solicitudAlb">
         <div class="contentForm">
-        <form action="respuesta_Registro_Usuario.php" class="solicitudForm">
+        <form action="respuesta_Registro_Usuario.php" class="solicitudForm" method="post">
 
 <div>
 <p><label for="nomUsuario">Nombre de Usuario:</label><br>
@@ -52,7 +52,7 @@ include "Header.php";
 </div>
 <div>
 <p><label for="fNacimiento">Fecha de Nacimiento:</label>
-<input type="date" name="fNacimiento" required class="estiloform"></p><br>
+<input type="date" name="fNacimiento"  class="estiloform"></p><br>
 </div>
 <div>
 <p><label for="ciudad">Ciudad:</label>
@@ -68,7 +68,7 @@ include "Header.php";
 
        // Mostrar los países en la lista desplegable
        while ($row = $result->fetch_assoc()) {
-           echo "<option value='" . $row['IdPais'] . "'>" . $row['NomPais'] . "</option>";
+           echo "<option value='" . $row['NomPais'] . "'>" . $row['NomPais'] . "</option>";
        }
    ?>
 </select></p><br>
@@ -99,8 +99,6 @@ include "Header.php";
 
 <input type="submit" value="Registrar">
 </form>
-
-
         </div>
     </div>
     

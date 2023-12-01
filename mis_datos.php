@@ -5,7 +5,7 @@ session_start();
 include "Header.php";
 $id = @mysqli_connect("", "root", "", "pibd");//se conecta a la BD
 
-$result_usu = mysqli_query($id,"SELECT NomUsuario, Clave, Email, Sexo, FNacimiento, Ciudad, Pais, NomPais FROM usuarios, paises where IdUsuario = {$_SESSION['idUser']}");
+$result_usu = mysqli_query($id,"SELECT NomUsuario, Clave, Email, Sexo, FNacimiento, Ciudad, Pais, NomPais,Idpais FROM usuarios, paises where IdUsuario = {$_SESSION['idUser']} and Pais= IdPais");
 $row = mysqli_fetch_assoc($result_usu);
 
 
@@ -65,7 +65,7 @@ $row = mysqli_fetch_assoc($result_usu);
                 </div>
                 <div>
                     <p><label for="fNacimiento">Fecha de Nacimiento:</label>
-                    <input type="date" name="fNacimiento" required class="estiloform"></p><br>
+                    <input type="date" name="fNacimiento"  class="estiloform"></p><br>
                 </div>
                 <div>
                     <p><label for="ciudad">Ciudad:</label>
@@ -76,13 +76,14 @@ $row = mysqli_fetch_assoc($result_usu);
                     <select name="pais" class="estiloform">
                     <?php
                         // Obtener la lista de países desde la tabla Paises
-                        $query = "SELECT * FROM Paises";
-                        $result = $conn->query($query);
-
+                        $query = "SELECT * FROM paises";
+                        $result = $id->query($query);
+                       
                         // Mostrar los países en la lista desplegable
                         while ($row = $result->fetch_assoc()) {
                             echo "<option value='" . $row['IdPais'] . "'>" . $row['NomPais'] . "</option>";
                         }
+                        
                     ?>
                     </select></p><br>
                 </div>
@@ -100,7 +101,7 @@ $row = mysqli_fetch_assoc($result_usu);
                     <?php
                         // Obtener la lista de países desde la tabla Estilos
                         $query = "SELECT * FROM estilos";
-                        $result = $conn->query($query);
+                        $result = $id->query($query);
 
                         // Mostrar los países en la lista desplegable
                         while ($row = $result->fetch_assoc()) {
