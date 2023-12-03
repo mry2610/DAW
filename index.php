@@ -1,22 +1,8 @@
-<!--Pagina principal-->
 <!DOCTYPE html>
 <?php
-
-
-session_start();  
-
+$tituloPagina= "PI";
 include "Header.php";
 
-$id = @mysqli_connect("", "root", "", "pibd");//se conecta a la BD
-if(mysqli_connect_errno() != 0){
-    echo mysqli_connect_error();
-    exit;
-}
-
-?>
-
-<body>
-<?php
         if(isset($_COOKIE["usuario"])){//si no tiene cookie de usuario, significa que no recuerda su registro,
             //por lo que solo se activará el if cuando entre despues de haber vuelto a iniciar sesion
             if(date("H:i:s") > '06:00:0' && date("H:i:s")<'11:59:59') {

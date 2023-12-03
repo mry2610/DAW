@@ -1,11 +1,8 @@
+<!DOCTYPE html>
 <?php
-
-session_start();
-
+$tituloPagina= "Mis albumes";
 include "Header.php";
 
-?>
- <?php
         // Configuración de la conexión a la base de datos
          $servername = "localhost";
          $username = "root";
@@ -19,10 +16,10 @@ include "Header.php";
             die("Conexión fallida: " . $conn->connect_error);
          }
          $Id = $_SESSION["idUser"];
-         $consulta = "SELECT a.Titulo, a.Descripcion,u.NomUsuario, f.Fichero,a.IdAlbum FROM albumes as a, fotos as f INNER JOIN Usuarios as u WHERE '$Id'= a.Usuario and a.Usuario= u.IdUsuario and f.Album=a.IdAlbum ";
+         $consulta = "SELECT a.Titulo, a.Descripcion,u.NomUsuario, f.Fichero,a.IdAlbum FROM albumes as a, fotos as f INNER JOIN Usuarios as u WHERE '$Id'= a.Usuario and a.Usuario= u.IdUsuario and f.Album=a.IdAlbum GROUP BY IdAlbum ";
          $result = $conn->query($consulta);
-        ?>
-<body>
+?>
+
     
     <main>
         <h1>Mis Albumes</h1>
@@ -45,15 +42,11 @@ include "Header.php";
                     <a href='ver_album.php?id=$IdAlbum[$i]'>
                         <img src={$row["Fichero"]}  class="roma">
                     </a>
-                    <p>{$row["IdAlbum"]}</p>
                     <p>{$row["Titulo"]}</p>
                     <p>{$row["Descripcion"]}</p>
                     <p>{$row["NomUsuario"]}</p>
                 </article>
                 hereDOC;
-               
-                
-                  
                }
             }
             echo '</div>';

@@ -1,26 +1,13 @@
 <!DOCTYPE html>
-
 <?php
-session_start();
-
-include "Header.php";
+$tituloPagina= "Añadir foto";
+include "header.php"; 
 if(!isset($_COOKIE["usuario"]) && !isset($_SESSION["nombre"])){//si no esta registrado
     header('Location: error_de_login.html');
 }
 
-// Configuración de la conexión a la base de datos
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "pibd";
-
-// Crear la conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
-
 // Verificar la conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+
 $id_foto = isset($_GET["id"]) ? $_GET["id"] : null;
 if ($id_foto) {
     // Realizar la consulta para obtener la información de la foto
@@ -31,7 +18,7 @@ if ($id_foto) {
                  JOIN paises p ON  f.Pais= p.Idpais
                  WHERE f.IdFoto = $id_foto";
 
-    $result = $conn->query($consulta);
+    $result = mysqli_query($id,$consulta);
     
 } else {
     echo "ID de foto no proporcionado.";
@@ -61,6 +48,7 @@ if ($id_foto) {
                     echo "<p>Álbum: {$foto['titulo']}</p>";
                     echo "<p>Usuario: {$foto['NomUsuario']}</p>";
                     echo "<a href='ver_album.php?id={$foto['Album']}&df=1' class='navegadores'>Ver album</a>";
+                    echo "<p><a href='perfil_usuario.php?id={$foto['IdUsuario']}&df=1' class='navegadores'>Ver usuario</a></p>";
                     echo '</article>';
                 } else {
                     echo "No se encontró la foto.";

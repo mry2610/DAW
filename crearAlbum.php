@@ -1,17 +1,13 @@
+
 <!DOCTYPE html>
-
 <?php
-
-session_start();
+$tituloPagina= "Crear album";
+include "header.php"; 
 if(!isset($_COOKIE["usuario"]) && !isset($_SESSION["nombre"])){
     header('Location: index.php');
 }
-include "Header.php";
-
 ?>
 
-<body>
-    
 
     <main>
         <h1>Crear nuevo album</h1>

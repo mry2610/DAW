@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-
 <?php
-session_start();
+$tituloPagina= "Resultado de busqueda";
+include "Header.php";
+
 if(!isset($_COOKIE["usuario"]) && !isset($_SESSION["nombre"])){
     header('Location: index.php');
 }
-include "Header.php";
 
 $identificador=$_SESSION["idUser"];
 $result = mysqli_query($id, "SELECT * FROM albumes INNER JOIN usuarios ON albumes.Usuario = usuarios.IdUsuario WHERE albumes.Usuario = $identificador");
@@ -116,7 +116,7 @@ if(mysqli_connect_errno() != 0){
                     </div>
                     
                     <br>
-                    <p><button type="submit" id="solicitar">Solicitar album</button></p>
+                    <p><input type="submit" id="solicitar"></p>
             
                 </form>
             </div>

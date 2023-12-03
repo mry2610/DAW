@@ -1,18 +1,8 @@
-<?php
-session_start();
-include "header.php"; // Asegúrate de incluir el archivo de conexión a la base de datos
-
-
-?>
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Foto</title>
-</head>
-<body>
+<?php
+$tituloPagina= "Añadir foto";
+include "header.php"; 
+?>
     <h2>Agregar Foto</h2>
 
 
@@ -72,5 +62,11 @@ include "header.php"; // Asegúrate de incluir el archivo de conexión a la base
             </form>
         </div>
     </div>
+
+    <?php
+        if(isset($_COOKIE["usuario"]) || isset($_SESSION["estilos"])){
+        include "footer.php";
+        }
+    ?>
 </body>
 </html>

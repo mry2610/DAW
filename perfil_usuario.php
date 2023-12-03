@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-
 <?php
-session_start();
+$tituloPagina= "Perfil del usuario";
+include "Header.php";
 if(!isset($_COOKIE["usuario"]) && !isset($_SESSION["nombre"])){
     header('Location: index.php');
 }
-include "Header.php";
 
 if (isset($_GET['eliminar_cookie'])) {
     // Si se recibe el parámetro 'eliminar_cookie' en la URL, entonces eliminamos la cookie.

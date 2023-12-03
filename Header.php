@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $id = @mysqli_connect("", "root", "", "pibd");//se conecta a la BD
 if(mysqli_connect_errno() != 0){
     echo mysqli_connect_error();
@@ -12,7 +12,7 @@ if(mysqli_connect_errno() != 0){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acceso al usuario</title>
+    <title><?=$tituloPagina?></title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <?php
 
@@ -96,9 +96,5 @@ if(mysqli_connect_errno() != 0){
         hereDoc;
     }
     
-    ?>
-<!--Boton que te lleve al Formulario de acceso-->
-        
-        
+    ?>    
     </header>
-</body>

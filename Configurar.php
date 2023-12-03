@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <?php
-
-session_start();
-include "Header.php";
-$result = mysqli_query($id, "SELECT * FROM estilos");
+    $tituloPagina= "Configuración";
+    include "Header.php";
+    $result = mysqli_query($id, "SELECT * FROM estilos");
     if(mysqli_connect_errno() != 0){
         echo mysqli_connect_error();
         exit;
@@ -41,13 +40,6 @@ $result = mysqli_query($id, "SELECT * FROM estilos");
 
 ?>
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Configuración</title>
-</head>
-<body>
     <div class="solicitudAlb">
         <div class="contentForm">
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" id="solForm" class="solicitudForm" method="post">

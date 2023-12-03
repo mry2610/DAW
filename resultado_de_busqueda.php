@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <?php
-
-session_start();
-
+$tituloPagina= "Resultado de busqueda";
 include "Header.php";
-
 ?>
-<body>
 
-    
     <main>
         <h1>Resultado de búsqueda</h1>
 

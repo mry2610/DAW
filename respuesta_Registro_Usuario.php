@@ -1,23 +1,7 @@
-<!--mostrar toda la información ordenada-->
-<!-- Registro de usuario-->
-
-<!--truquele to wapo: poner ! y enter/tabulador-->
-
-<!--no usar align, eso se usa en CSS-->
-<!--no usar br-->
-<!--html validator de w3c-->
-<!--Web developer extensión-->
-
 <!DOCTYPE html>
 <?php
-
-
-
+$tituloPagina= "Respuesta registro";
 include "Header.php";
-
-?>
-<body>
-<?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validar nombre de usuario
     $nomUsuario = $_POST["nomUsuario"];

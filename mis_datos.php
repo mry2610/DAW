@@ -1,31 +1,31 @@
 
+<!DOCTYPE html>
 <?php
-// Configuración de la conexión a la base de datos
-session_start();
+$tituloPagina= "Mis datos";
 include "Header.php";
-$id = @mysqli_connect("", "root", "", "pibd");//se conecta a la BD
-
 $result_usu = mysqli_query($id,"SELECT NomUsuario, Clave, Email, Sexo, FNacimiento, Ciudad, Pais, NomPais,Idpais FROM usuarios, paises where IdUsuario = {$_SESSION['idUser']} and Pais= IdPais");
 $row = mysqli_fetch_assoc($result_usu);
 
-
-
 ?>
-<!DOCTYPE html>
-<html lang="es">
-<body>
     <main>
     <h2>Datos actuales del Usuario</h2>
     <div class="solicitudAlb">
         <div class="contentForm">
             <?php
+                $sexo="Hombre";
+                if($row["Sexo"]==1){
+                    $sexo="Mujer";
+                }
+                if($row["Sexo"]==2){
+                    $sexo="No responder";
+                }
                 echo<<<hereDoc
-                <p>Nombre:{$row["NomUsuario"]}</p>
-                <p>Clave:{$row["Clave"]}</p>
-                <p>Email:{$row["Email"]}</p>
-                <p>Sexo:{$row["Sexo"]}</p>
-                <p>Fecha de nacimiento:{$row["FNacimiento"]}</p>
-                <p>Pais:{$row["NomPais"]}</p>
+                <p>Nombre: {$row["NomUsuario"]}</p>
+                <p>Clave: {$row["Clave"]}</p>
+                <p>Email: {$row["Email"]}</p>
+                <p>Sexo: $sexo</p>
+                <p>Fecha de nacimiento: {$row["FNacimiento"]}</p>
+                <p>Pais: {$row["NomPais"]}</p>
 
                 hereDoc;
             ?>
@@ -33,9 +33,6 @@ $row = mysqli_fetch_assoc($result_usu);
         </div>
     </div>
 
-
-
-    
     <h2>Editar usuario</h2>
     <div class="solicitudAlb">
         <div class="contentForm">
@@ -92,10 +89,6 @@ $row = mysqli_fetch_assoc($result_usu);
                     <input type="text" name="foto" class="estiloform"></p><br>
                 </div>
                 <div>
-                    <p><label for="fRegistro">Fecha de Registro:</label>
-                    <input type="text" name="fRegistro" value="<?php echo date('Y-m-d H:i:s'); ?>" readonly class="estiloform"></p><br> 
-                </div>
-                <div>
                     <p><label for="estilo">Estilo:</label>
                     <select name="estilo" class="estiloform">
                     <?php
@@ -121,10 +114,5 @@ $row = mysqli_fetch_assoc($result_usu);
     include "footer.php";
     ?>
     
-</body>
-
-
-    
-
-    
+</body>    
 </html>

@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <?php
-session_start();
-include "Header.php";
-
+$tituloPagina= "Login";
+include "header.php"; 
 ?>
-
-
-
-<body>
     <main>
 
     <?php

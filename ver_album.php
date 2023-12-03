@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-
 <?php
-session_start();
+$tituloPagina= "Resultado de busqueda";
 include "Header.php";
 if(!isset($_COOKIE["usuario"]) && !isset($_SESSION["nombre"])){//si no esta registrado
     header('Location: error_de_login.html');

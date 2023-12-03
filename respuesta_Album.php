@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <?php
+$tituloPagina= "Respuesta de album";
+include "Header.php";
 
-session_start();
 if(!isset($_COOKIE["usuario"]) && !isset($_SESSION["nombre"])){
     header('Location: index.php');
 }
-include "Header.php";
 
 ?>
-<body>
+
 
     <main>
         <div class="formRegistro">

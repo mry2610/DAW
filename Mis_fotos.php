@@ -1,29 +1,14 @@
+<!DOCTYPE html>
 <?php
-
-session_start();
+$tituloPagina= "Mis fotos";
 include "Header.php";
 
-?>
-<?php
-        // Configuración de la conexión a la base de datos
-         $servername = "localhost";
-         $username = "root";
-         $password = "";
-         $dbname = "pibd";
+$idUser = $_SESSION["idUser"];
+$consulta = "SELECT * FROM fotos as f, albumes as a, paises as p INNER JOIN Usuarios as u WHERE a.IdAlbum= f.Album 
+AND '$idUser'= a.Usuario AND a.Usuario= u.IdUsuario AND p.IdPais = f.pais";
+$result = mysqli_query($id,$consulta);
 
-         // Crear la conexión
-         $conn = new mysqli($servername, $username, $password, $dbname);
-         //Verificar la conexión
-         if ($conn->connect_error) {
-            die("Conexión fallida: " . $conn->connect_error);
-         }
-         $Id = $_SESSION["Id"];
-         $consulta = "SELECT * FROM fotos as f, albumes as a, paises as p INNER JOIN Usuarios as u WHERE a.IdAlbum= f.Album 
-         AND '$Id'= a.Usuario AND a.Usuario= u.IdUsuario AND p.IdPais = f.pais";
-         $result = $conn->query($consulta);
-         
-        ?>
-<body>
+?>
     
     <main>
         <h1>Mis Fotos</h1>

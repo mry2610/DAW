@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-
 <?php
-session_start();
+$tituloPagina= "Mi perfil";
+include "header.php"; 
 
 if(!isset($_COOKIE["usuario"]) && !isset($_SESSION["nombre"])){
     header('Location: index.php');
 }
 
-
-
-include "Header.php";
 
 if (isset($_GET['eliminar_cookie'])) {
     // Si se recibe el parámetro 'eliminar_cookie' en la URL, entonces eliminamos la cookie.
@@ -24,7 +21,6 @@ if (isset($_GET['eliminar_cookie'])) {
 
 ?>
 
-<body>
     <main>
         <h1>Mi perfil</h1>
         
@@ -42,6 +38,7 @@ if (isset($_GET['eliminar_cookie'])) {
                 <a href='crearAlbum.php' class="navegadores">crear Album</a>
                 <a href='Solicitar_album.php' class="navegadores">Solicitar album</a>
                 <a href='Mis_albumes.php' class="navegadores">Mis albumes</a>
+                <a href='Mis_fotos.php' class="navegadores">Mis fotos</a>
                 <a href='mis_datos.php' class="navegadores">Mis datos</a>
                 <a href="Añadir_Foto.php?id=<?php echo $_SESSION["idUser"];?>" class="navegadores">Añadir foto a album</a>
                 <a href="DadoBaja.html" class="navegadores">Darme de baja</a>
