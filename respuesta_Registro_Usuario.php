@@ -1,76 +1,97 @@
 <!DOCTYPE html>
 <?php
 $tituloPagina= "Respuesta registro";
+
 include "Header.php";
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Validar nombre de usuario
-    $nomUsuario = $_POST["nomUsuario"];
+ ?>
+
+        
+
     
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nomUsuario = $_POST["nomUsuario"];
+    $clave = $_POST["clave"];
+    $rclave = $_POST["rclave"];
+    $email = $_POST["email"];
+    $fNacimiento = $_POST["fNacimiento"];
+    $foto = $_POST["foto"];
+    $ciudad= $_POST["ciudad"];
+    $pais = $_POST["pais"];
+    $sex= $_POST["sexo"];
+    $estilo=$_POST["estilo"];
+    $fregistro= $_POST["fRegistro"];
+    // Validar nombre de usuario
     if (!preg_match("/^[a-zA-Z][a-zA-Z0-9]{2,14}$/", $nomUsuario)) {
         echo "<p>Nombre de usuario no válido. Debe comenzar con una letra, contener solo letras y números, y tener longitud entre 3 y 15 caracteres.</p>";
-        exit;
-    }
-
-    // Validar contraseña
-    $clave = $_POST["clave"];
-    /*(?=.*[a-zA-Z]): Asegura que al menos haya una letra (mayúscula o minúscula).
-    (?=.*\d): Asegura que al menos haya un dígito.
-    [a-zA-Z\d_-]{6,15}: Permite letras (mayúsculas y minúsculas), 
-    dígitos, guion y guion bajo, con una longitud entre 6 y 15 caracteres. */
-    if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d_-]{6,15}$/", $clave)) {
+    } else if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d_-]{6,15}$/", $clave)) {
         echo "<p>Contraseña no válida. Debe contener al menos una letra mayúscula, una letra minúscula y un número, y tener longitud entre 6 y 15 caracteres.</p>";
-        exit;
-    }
-
-    $email = $_POST["email"];
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($email) > 254) {
+    } else if ($rclave !== $clave) {
+        echo "<p>Las contraseñas no coinciden.</p>";
+    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($email) > 254) {
         echo "<p>Email no válido.</p>";
-        exit;
-    }
+    } else {
+        $fechaActual = new DateTime();
+        $fechaNacimiento = DateTime::createFromFormat('Y-m-d', $fNacimiento);
+       
 
-    $fNacimiento = $_POST["fNacimiento"];
-    $fechaActual = new DateTime();
-    $fechaNacimiento = DateTime::createFromFormat('Y-m-d', $fNacimiento);
-    $edad = $fechaNacimiento->diff($fechaActual)->y;
+        if ($fechaNacimiento !== false ) {
+            $edad = $fechaNacimiento->diff($fechaActual)->y;
 
-    if ($fechaNacimiento === false || $edad < 18) {
-        echo "<p>La fecha de nacimiento no es válida o el usuario debe tener al menos 18 años.</p>";
-        exit;
+            if ($edad < 18) {
+                echo "<p>La fecha de nacimiento no es válida o el usuario debe tener al menos 18 años.</p>";
+            } else {
+
+            // Preparar la consulta SQL
+            $sql = "INSERT INTO usuarios (NomUsuario, Clave, Email, sexo, fNacimiento, Ciudad, Pais, Foto, Fregistro, Estilo) 
+            VALUES('$nomUsuario', '$clave', '$email','$sex', '$fNacimiento','$ciudad','$pais', '$foto','$fregistro', '$estilo')";
+
+            // Ejecutar la consulta
+            if ($id->query($sql) === TRUE) {
+                echo "<p>Registro exitoso. La información ha sido almacenada en la base de datos.</p>";
+
+                
+            } else {
+                echo "<p>Error al ejecutar la consulta: " . $conn->error . "</p>";
+            }
+                // Todas las comprobaciones han pasado, mostrar la información
+                echo "<main>";
+                echo "<p>Nombre: " . $nomUsuario . " </p>";
+
+                echo "<p>Contraseña: " . $clave . "</p>";
+
+                echo "<p>Email: " .  $email . "</p>";
+
+                echo "<p>Sexo: " .  $_POST["sexo"] . "</p>";
+
+                echo "<p>Fecha de Nacimiento: " . $fNacimiento . "</p>";
+
+                echo "<p>Ciudad: " . $_POST["ciudad"] . "</p>";
+
+                $query = "SELECT * FROM Paises where Idpais='$pais'";
+                $result = mysqli_query($id,$query);
+                $row = $result->fetch_assoc();
+                echo "<p>País: " . $row['NomPais'] . "</p>";
+                echo "<p>Foto de perfil: <img src=$foto alt='foto de perfil'></p>";
+                echo "<p>Fecha de Registro:" . $_POST["fRegistro"] . "</p>";
+                $query = "SELECT * FROM Estilos where IdEstilo='$estilo'";
+                $result = mysqli_query($id,$query);
+                $row = $result->fetch_assoc();
+                echo "<p>Estilo:" .$row["Nombre"] . "</p>";
+                echo "</main>";
+            }
+        } else {
+            echo "<p>Debe introducir una fecha de nacimiento.</p>";
+        }
     }
 }
-$foto= $_POST["foto"];
-
-
-
-
- 
- 
- 
-
 ?>
-    <main>
-        <?php
-            echo "<p>Nombre: " . $_POST["nomUsuario"] . " </p>";
-            echo "<p>Contraseña: " . $_POST["clave"] . "</p>";
-            echo "<p>Email: " .  $_POST["email"] . "</p>";
-            echo "<p>Sexo: " .  $_POST["sexo"] . "</p>";
-            echo "<p>Fecha de Nacimiento: " . $_POST["fNacimiento"]. "</p>";
-            echo "<p>Ciudad: " . $_POST["ciudad"] . "</p>";
-            echo "<p>País: " . $_POST["pais"] . "</p>";
-            echo "<p>Foto de perfil: " ;
-            echo "<img src=$foto alt='foto de perfil' > ";
-            echo "<p>Fecha de Registro:" . $_POST["fRegistro"] ."</p>";
-            echo "<p>Estilo:". $_POST["estilo"]. "</p>";
+  <?php
 
-        ?>
-    </main>
-    <?php
-
-include "footer.php";
-
-?>
-
-                        
+ include "footer.php";
+    // Cerrar la conexión
+    $id->close();
+ ?>                       
 </body>
 </html>
 

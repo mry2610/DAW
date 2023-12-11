@@ -41,7 +41,7 @@ if ($id_foto) {
                 $fechaFormateada = $dateTime->format('d/m/Y');
                 if ($foto) {
                     echo '<article class="detallesImagen">';
-                    echo "<img src={$foto["Fichero"]} alt={$foto["Alternativo"]} >";
+                    echo "<img src={$foto["Fichero"]} alt={$foto["Alternativo"]} class='roma' >";
                     echo "<p>Titulo: {$foto['Titulo']}</p>";
                     echo "<p>Fecha: {$fechaFormateada}</p>";
                     echo "<p>País: {$foto['NomPais']}</p>";

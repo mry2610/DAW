@@ -18,7 +18,10 @@ include "Header.php";
                     <p><label for="clave">Contraseña:</label>
                     <input type="text" name="clave" class="estiloform"></p><br>
                 </div>
-
+                <div>
+                    <p><label for="rclave"> Repite la Contraseña:</label>
+                    <input type="text" name="rclave" class="estiloform"></p><br>
+                </div>
                 <div>
                     <p><label for="email">Email:</label>
                     <input type="text" name="email" class="estiloform"></p><br>
@@ -53,7 +56,7 @@ include "Header.php";
 
                         // Mostrar los países en la lista desplegable
                         while ($row = $result->fetch_assoc()) {
-                            echo "<option value='" . $row['NomPais'] . "'>" . $row['NomPais'] . "</option>";
+                            echo "<option value='" . $row['IdPais'] . "'>" . $row['NomPais'] . "</option>";
                         }
                     ?>
                     </select></p><br>
@@ -79,7 +82,7 @@ include "Header.php";
 
                         // Mostrar los países en la lista desplegable
                         while ($row = $result->fetch_assoc()) {
-                            echo "<option value='" . $row['Nombre'] . "'>" . $row['Nombre'] . "</option>";
+                            echo "<option value='" . $row['IdEstilo'] . "'>" . $row['Nombre'] . "</option>";
                         }
                     ?>
                     </select></p><br> 

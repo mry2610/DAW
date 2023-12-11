@@ -34,8 +34,12 @@ $fechaReciente=$intervalo['fechaReciente'];
         </div>
     </div>
 
-    <div class="inicio">
+    
     <?php
+    if($cantidadRegistros==0){
+        
+    }else{
+        echo "<div class='inicio'>";
         echo<<<hereDoc
                 <h2>Imagenes del album</h2>
 
@@ -62,8 +66,10 @@ $fechaReciente=$intervalo['fechaReciente'];
             echo"<a href='Añadir_Foto.php?id={$_SESSION["idUser"]}' class='navegadores'>Añadir foto a album</a>";
             
         }
+        echo "</div>";
+    }
     ?>
-    </div>
+    
     
     
 

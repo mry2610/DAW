@@ -26,6 +26,7 @@
                 echo "Estilo actualizado con éxito.";
                 $_SESSION["estilos"] = $rowEstilo["Fichero"];
                 
+                
             } else {
                 echo "Error al actualizar el estilo: " . mysqli_error($id);
             }
