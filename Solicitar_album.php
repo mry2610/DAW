@@ -8,7 +8,8 @@ if(!isset($_COOKIE["usuario"]) && !isset($_SESSION["nombre"])){
 }
 
 $identificador=$_SESSION["idUser"];
-$result = mysqli_query($id, "SELECT * FROM albumes INNER JOIN usuarios ON albumes.Usuario = usuarios.IdUsuario WHERE albumes.Usuario = $identificador");
+$result = mysqli_query($id, "SELECT * FROM albumes INNER JOIN usuarios 
+ON albumes.Usuario = usuarios.IdUsuario WHERE albumes.Usuario = $identificador");
 
 if(mysqli_connect_errno() != 0){
     echo mysqli_connect_error();
@@ -71,7 +72,7 @@ if(mysqli_connect_errno() != 0){
         
                     <div>
                         <p><label>Número de copias:</label>
-                        <input type="text" name="numero" id="numero" class="estiloform"></p>
+                        <input type="number" name="numero" id="numero" class="estiloform" placeholder=1></p>
                     </div>
         
                     <div>
@@ -104,7 +105,7 @@ if(mysqli_connect_errno() != 0){
                     <div>
                         <p>
                             <label>Fecha de recepción</label>
-                            <input type="text" name="fechaRe" id="fechaRe" class="estiloform">
+                            <input type="date" name="fechaRe" id="fechaRe" class="estiloform">
                         </p>
                     </div>
         
@@ -224,7 +225,5 @@ if(mysqli_connect_errno() != 0){
 include "footer.php";
 
 ?>  
-    
-    
 </body>
 </html>
